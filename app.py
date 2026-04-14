@@ -29,8 +29,8 @@ ADMIN_CHAT_ID: Final[int] = -5124062220
 # Render URL вставишь позже после деплоя
 RENDER_EXTERNAL_URL: Final[str] = "https://telegram-gemini-bot-jvvg.onrender.com/"
 
-WEBHOOK_SECRET_PATH: Final[str] = f"/webhook/{TELEGRAM_BOT_TOKEN}"
-WEBHOOK_URL: Final[str] = f"{RENDER_EXTERNAL_URL}{WEBHOOK_SECRET_PATH}"
+WEBHOOK_SECRET_PATH: Final[str] = "/webhook"
+WEBHOOK_URL: Final[str] = f"{RENDER_EXTERNAL_URL.rstrip('/')}{WEBHOOK_SECRET_PATH}"
 
 logging.basicConfig(
     format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
