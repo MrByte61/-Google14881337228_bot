@@ -27,7 +27,7 @@ GEMINI_MODEL: Final[str] = "gemini-2.5-flash"
 ADMIN_CHAT_ID: Final[int] = -5124062220
 
 # Render URL вставишь позже после деплоя
-RENDER_EXTERNAL_URL: Final[str] = "https://your-bot-name.onrender.com"
+RENDER_EXTERNAL_URL: Final[str] = "https://telegram-gemini-bot-jvvg.onrender.com/"
 
 WEBHOOK_SECRET_PATH: Final[str] = f"/webhook/{TELEGRAM_BOT_TOKEN}"
 WEBHOOK_URL: Final[str] = f"{RENDER_EXTERNAL_URL}{WEBHOOK_SECRET_PATH}"
