@@ -1,4 +1,5 @@
 import logging
+import os
 from collections import defaultdict, deque
 from html import escape
 from typing import Final
@@ -19,15 +20,16 @@ from telegram.ext import (
 # =========================
 # CONFIG
 # =========================
-TELEGRAM_BOT_TOKEN: Final[str] = "8647789219:AAEYh2gamKCbGAd_p1C_YmSyGlRK0LnX-TQ"
-GEMINI_API_KEY: Final[str] = "AIzaSyB9cW2ZGrx_VC4UZWHx_jsuhOaArsJAHBo"
-GEMINI_MODEL: Final[str] = "gemini-2.5-flash"
+TELEGRAM_BOT_TOKEN: Final[str] = os.getenv("TELEGRAM_BOT_TOKEN", "")
+GEMINI_API_KEY: Final[str] = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL: Final[str] = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+RENDER_EXTERNAL_URL: Final[str] = os.getenv("RENDER_EXTERNAL_URL", "")
+ADMIN_CHAT_ID_RAW: Final[str] = os.getenv("ADMIN_CHAT_ID", "0")
 
-# Сюда потом вставишь свой Telegram ID, чтобы бот пересылал тебе сообщения пользователей
-ADMIN_CHAT_ID: Final[int] = -5124062220
-
-# Render URL вставишь позже после деплоя
-RENDER_EXTERNAL_URL: Final[str] = "https://telegram-gemini-bot-jvvg.onrender.com/"
+try:
+    ADMIN_CHAT_ID = int(ADMIN_CHAT_ID_RAW)
+except ValueError:
+    ADMIN_CHAT_ID = 0
 
 WEBHOOK_SECRET_PATH: Final[str] = "/webhook"
 WEBHOOK_URL: Final[str] = f"{RENDER_EXTERNAL_URL.rstrip('/')}{WEBHOOK_SECRET_PATH}"
